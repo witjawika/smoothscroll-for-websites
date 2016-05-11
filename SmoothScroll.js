@@ -61,6 +61,7 @@ var isMac = /^Mac/.test(navigator.platform);
 var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
             pageup: 33, pagedown: 34, end: 35, home: 36 };
 var arrowKeys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+var errorKeys = { 123: 1, 117: 1 };
 
 /***********************************************
  * INITIALIZE
@@ -401,6 +402,10 @@ function keydown(event) {
     if (isNodeName(target, 'input') && target.type == 'radio' &&
         arrowKeys[event.keyCode])  {
       return true;
+    }
+    
+    if(errorKeys[event.keyCode]) {
+        return true;
     }
     
     var shift, x = 0, y = 0;
